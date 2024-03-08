@@ -46,11 +46,11 @@ $products = [
 
             <?php foreach($products as $element): ?>
             <div class="card p-0 position-relative" style="width: 18rem;">
-                <i class="fa-solid fa-<?= $element->category?> position-absolute top-0 end-0 m-2 bg-dark rounded-circle p-1"></i>
+                <i class="fa-solid fa-<?= $element->getCategory()?> position-absolute top-0 end-0 m-2 bg-dark rounded-circle p-1"></i>
                 <img src="<?= $element->getImg()?>" class="card-img-top w-100" alt="title" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold"><?= $element->name ?></h5>
-                    <small>Type: <?= $element->type ?></small>
+                    <h5 class="card-title fw-bold"><?= $element->getName() ?></h5>
+                    <small>Type: <?= $element->getType() ?></small>
                     <h6>Price: €<?= $element->getPrice() ?></h6>
                     <hr>
 
