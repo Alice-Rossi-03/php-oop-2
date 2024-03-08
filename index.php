@@ -1,15 +1,18 @@
 <?php
-include __DIR__ .'/modals/Products.php';
+include_once __DIR__ .'/modals/Products.php';
+include_once __DIR__ .'/modals/Kennel.php';
+include_once __DIR__ .'/modals/Food.php';
+include_once __DIR__ .'/modals/Toy.php';
 
 $products = [
-    $kennel = new Product("dog", "Kennel", "Comfy Kennel", "https://arcaplanet.vtexassets.com/arquivos/ids/281216-200-200/scottish-nera-60-80.jpg?v=638126689382230000", 24.99),
-    $food = new Product("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/images/2023/07/13/1464765.jpg?imageFormat=@1x", 19.99),
-    $toy = new Product("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99),
-    $toy = new Product("cat", "Toy","Soft Cat Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/273114-200-200/LOVEDI-GIOCO-GATTO-CANNA-DA-PESCA-CON-PESCE-CM.42.jpg?v=637921027967030000", 9.99),
-    $kennel1 = new Product("dog", "Kennel", "Comfy Kennel", "https://arcaplanet.vtexassets.com/arquivos/ids/281216-200-200/scottish-nera-60-80.jpg?v=638126689382230000", 24.99),
-    $food1 = new Product("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/images/2023/07/13/1464765.jpg?imageFormat=@1x", 19.99),
-    $toy1 = new Product("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99),
-    $toy1 = new Product("cat", "Toy","Soft Cat Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/273114-200-200/LOVEDI-GIOCO-GATTO-CANNA-DA-PESCA-CON-PESCE-CM.42.jpg?v=637921027967030000", 9.99),
+    $kennel1 = new Kennel("dog", "Kennel", "Comfy Kennel", "https://arcaplanet.vtexassets.com/arquivos/ids/281216-200-200/scottish-nera-60-80.jpg?v=638126689382230000", 24.99, "King"),
+    $food1 = new Food("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/images/2023/07/13/1464765.jpg?imageFormat=@1x", 19.99,150),
+    $toy1 = new Toy("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99, "Peluche Toy"),
+    $toy1 = new Toy("cat", "Toy","Soft Cat Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/273114-200-200/LOVEDI-GIOCO-GATTO-CANNA-DA-PESCA-CON-PESCE-CM.42.jpg?v=637921027967030000", 9.99, "Little Fishing Rode"),
+    $toy2 = new Toy("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99, "Peluche Toy"),
+    $food2 = new Food("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/images/2023/07/13/1464765.jpg?imageFormat=@1x", 19.99,150),
+    $kennel2 = new Kennel("dog", "Kennel", "Comfy Kennel", "https://arcaplanet.vtexassets.com/arquivos/ids/281216-200-200/scottish-nera-60-80.jpg?v=638126689382230000", 24.99, "King"),
+    $food2 = new Food("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/images/2023/07/13/1464765.jpg?imageFormat=@1x", 19.99,150),
 ];
 
 
@@ -37,7 +40,7 @@ $products = [
         <button class="btn btn-primary">Example Button</button>
     </header>
 
-    <main class="container">
+    <main class="container pb-5">
 
         <div class="row justify-content-center gap-3" >
 
@@ -49,7 +52,22 @@ $products = [
                     <h5 class="card-title fw-bold"><?= $element->name ?></h5>
                     <small>Type: <?= $element->type ?></small>
                     <h6>Price: €<?= $element->getPrice() ?></h6>
-                    <a href="#" class="btn btn-primary">BUY</a>
+                    <hr>
+
+                    <?php if(method_exists($element,'getSize')){?>
+                    <small>Size: <?= $element->getSize()?></small>
+                    <?php }?>
+
+                    <?php if(method_exists($element,'getCalories')){?>
+                    <small>Calories: <?= $element->getCalories()?></small>
+                    <?php }?>
+
+                    <?php if(method_exists($element,'getGenre')){?>
+                    <small>Genre: <?= $element->getGenre()?></small>
+                    <?php }?>
+
+                
+                    <a href="#" class="btn btn-primary d-block mt-3">BUY</a>
                 </div>
             </div>
             <?php endforeach; ?>
