@@ -10,8 +10,10 @@ trait Discount{
                 throw new Exception('Its not a number');
             } 
             $this->discount = $_discount . $_unit; 
-        } catch(Exception $e){
+        } catch(Exception $e){       
+            echo "<pre class='text-danger'>";              
             echo "Error: " . $e->getMessage();
+            echo "</pre>";
         }
     }
 

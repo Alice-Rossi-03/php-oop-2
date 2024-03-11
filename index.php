@@ -16,6 +16,7 @@ $kennel1->setDiscount("word", "€");
 $food1->setDiscount(10, "%");
 $toy1->setDiscount(8.70,"€");
 
+
 $products = [
     $kennel1, 
     $food1, 
@@ -77,8 +78,8 @@ $products = [
 
                         <hr>
 
-                        <?php if (method_exists($element, 'setDiscount')) { ?>
-                            <small><?= $element->getDiscount()?></small>
+                        <?php if (null !== ($element->getDiscount())) { ?>
+                            <small><?= "Discount: ". $element->getDiscount()?></small>
                         <?php } ?>
 
                         <a href="#" class="btn btn-primary d-block mt-3">BUY</a>
@@ -96,3 +97,4 @@ $products = [
 </body>
 
 </html>
+
