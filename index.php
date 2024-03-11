@@ -10,9 +10,9 @@ $food1 = new Food("cat", "Food", "Delicious Cat Food", "https://www.b2x.it/rest/
 
 $toy1 = new Toy("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99, "Peluche Toy");
 
-$toy2 = new Toy("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/218063-200-200/https---www.arcaplanet.it-media-catalog-product--t-r-trixie-cane-in-tessuto-peluche-tric78.jpg?v=637454594866330000", 14.99, "Peluche Toy");
+$toy2 = new Toy("dog", "Toy", "Interactive Dog Toy", "https://arcaplanet.vtexassets.com/arquivos/ids/223864/trixie-cane-gioco-corda.jpg?v=637454736645100000", 14.99, "Toy");
 
-$kennel1->setDiscount(23.55, "€");
+$kennel1->setDiscount("word", "€");
 $food1->setDiscount(10, "%");
 $toy1->setDiscount(8.70,"€");
 
@@ -77,7 +77,9 @@ $products = [
 
                         <hr>
 
-                        <small><?= $element->getDiscount()?></small>
+                        <?php if (method_exists($element, 'setDiscount')) { ?>
+                            <small><?= $element->getDiscount()?></small>
+                        <?php } ?>
 
                         <a href="#" class="btn btn-primary d-block mt-3">BUY</a>
                     </div>
