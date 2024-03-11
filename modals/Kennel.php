@@ -1,8 +1,11 @@
 <?php
 
+require_once __DIR__ . '/../traits/Discount.php';
+
 class Kennel extends Product{
 
     private $size; 
+    use Discount; 
 
     public function __construct(string $_category, string $_type, string $_name, string $_img,  float $_price, string $_size)
     {
@@ -18,6 +21,9 @@ class Kennel extends Product{
     public function setSize($_size){
         return $this->size = $_size; 
     }
+
+
+
 
 }
 
