@@ -24,6 +24,10 @@ $products = [
     $toy2
 ];
 
+// echo "<pre>";
+// var_dump($products);
+// echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>

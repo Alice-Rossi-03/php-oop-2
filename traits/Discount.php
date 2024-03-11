@@ -12,6 +12,7 @@ trait Discount{
             $this->discount = $_discount . $_unit; 
         } catch(Exception $e){       
             echo "<pre class='text-danger'>";              
+            $this->discount="<span class='text-danger'>Error: Its Not A Number</span>";
             echo "Error: " . $e->getMessage();
             echo "</pre>";
         }
